@@ -13,7 +13,7 @@ const variants = {
   secondary:
     "border border-white/12 bg-white/6 text-white hover:scale-[1.01] hover:bg-white/10",
   login:
-    "bg-[#ff9f6e] text-[#2f1203] shadow-lg shadow-[#ff9f6e]/25 hover:scale-[1.01] hover:bg-[#ffb182]",
+    "bg-[linear-gradient(135deg,#d8ff9d_0%,#7ef0b6_100%)] text-[#17311f] shadow-lg shadow-[#7ef0b6]/20 hover:scale-[1.01] hover:brightness-105",
 };
 
 export function Button({

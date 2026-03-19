@@ -3,7 +3,6 @@ import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -56,7 +55,6 @@ export default function RootLayout({
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
-          <WhatsAppFloat />
         </div>
       </body>
     </html>

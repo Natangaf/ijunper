@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/fintech/button";
+import headerIcon from "@/assets/icon-ijumper-jumbo.png";
+import whatsIcon from "@/assets/icons-whats.png";
 
 const navItems = [
-  { href: "/servicos", label: "Servicos" },
+  { href: "/", label: "Home" },
   { href: "/sobre", label: "Sobre" },
-  { href: "/sobre#team", label: "Equipe" },
+  { href: "/servicos", label: "Servicos" },
   { href: "/blog", label: "Conteudos" },
 ];
 
@@ -17,82 +18,95 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(28,14,54,0.72)] backdrop-blur-xl">
-      <div className="container-shell flex min-h-20 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/6">
+    <header className="sticky top-0 z-50 px-3 py-3 sm:px-5 sm:py-5">
+      <div className="container-shell">
+        <div className="flex items-center justify-between rounded-full border border-white/10 bg-[linear-gradient(135deg,#3a1290_0%,#2b0a5c_55%,#4d1aa7_100%)] px-4 py-3 shadow-[0_18px_50px_rgba(20,7,44,0.28)] backdrop-blur-xl sm:px-5">
+          <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
             <Image
-              src="/logo.png"
-              alt="I Jumper"
-              width={44}
-              height={44}
-              className="h-full w-full object-contain"
+              src={headerIcon}
+              alt="I Jumper Marketing & Consultoria"
+              width={56}
+              height={56}
+              className="h-11 w-auto object-contain"
             />
-          </div>
-          <div>
-            <p className="font-display text-base font-bold tracking-[0.02em] text-white">
-              I Jumper
-            </p>
-            <p className="text-xs uppercase tracking-[0.18em] text-white/48">
-              Marketing & Consultoria
-            </p>
-          </div>
-        </Link>
+          </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-white/82 transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden lg:block">
             <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-white/68 transition-colors hover:text-white"
+              href="https://wa.me/5500000000000"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#20103d] shadow-lg transition-transform duration-200 hover:scale-[1.02]"
             >
-              {item.label}
+              <Image
+                src={whatsIcon}
+                alt="WhatsApp"
+                width={18}
+                height={18}
+                className="h-[18px] w-[18px] object-contain"
+              />
+              Vamos conversar
             </Link>
-          ))}
-        </nav>
+          </div>
 
-        <div className="hidden md:block">
-          <Button href="/contato" variant="login">
-            Area do cliente
-          </Button>
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white lg:hidden"
+            aria-label="Abrir menu"
+            onClick={() => setOpen((current) => !current)}
+          >
+            <span className="text-xl">{open ? "x" : "="}</span>
+          </button>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/6 text-white md:hidden"
-          aria-label="Abrir menu"
-          onClick={() => setOpen((current) => !current)}
-        >
-          <span className="text-xl">{open ? "x" : "="}</span>
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-white/10 md:hidden"
-          >
-            <div className="container-shell flex flex-col gap-5 py-6">
-              {navItems.map((item) => (
+        <AnimatePresence>
+          {open ? (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="mt-3 overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,#35107f_0%,#2b0a5c_100%)] p-5 shadow-[0_18px_50px_rgba(20,7,44,0.28)] lg:hidden"
+            >
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm font-semibold text-white/86"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm font-semibold text-white/82"
+                  href="https://wa.me/5500000000000"
+                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#20103d]"
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  <Image
+                    src={whatsIcon}
+                    alt="WhatsApp"
+                    width={18}
+                    height={18}
+                    className="h-[18px] w-[18px] object-contain"
+                  />
+                  Vamos conversar
                 </Link>
-              ))}
-              <Button href="/contato" variant="login" className="w-full">
-                Area do cliente
-              </Button>
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </div>
     </header>
   );
 }
