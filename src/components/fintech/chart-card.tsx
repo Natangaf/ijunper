@@ -48,15 +48,11 @@ function FloatingNode({
 }
 
 function SavingsCard() {
-  const bars = [
-    { back: 44, front: 30 },
-    { back: 70, front: 50 },
-    { back: 52, front: 38 },
-    { back: 32, front: 22 },
-    { back: 84, front: 60 },
-    { back: 76, front: 56, active: true },
-    { back: 96, front: 70 },
-    { back: 72, front: 52 },
+  const groups = [
+    { label: "Posic.", left: 56, right: 34 },
+    { label: "Conteu.", left: 10, right: 34 },
+    { label: "Camp.", left: 40, right: 60 },
+    { label: "Vendas", left: 40, right: 50 },
   ];
 
   return (
@@ -66,30 +62,29 @@ function SavingsCard() {
       animate={{ opacity: 1, y: 0, x: 0 }}
       transition={{ delay: 0.55, duration: 0.65, type: "spring" }}
     >
-      <div className="mb-4 flex h-24 items-end gap-2">
-        {bars.map((bar, i) => (
+      <div className="mb-4 flex h-24 items-end justify-between gap-3">
+        {groups.map((group, i) => (
           <motion.div
             key={i}
-            className="flex flex-1 items-end gap-[3px]"
+            className="flex flex-1 flex-col items-center justify-end"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
             transition={{ delay: 0.8 + i * 0.05, duration: 0.3 }}
             style={{ originY: 1 }}
           >
-            <div
-              className="flex-1 rounded-t-[0.55rem]"
-              style={{
-                height: bar.back,
-                background: bar.active ? "#a259ff" : "rgba(238,243,255,0.94)",
-              }}
-            />
-            <div
-              className="flex-1 rounded-t-[0.55rem]"
-              style={{
-                height: bar.front,
-                background: bar.active ? "#ff4fcb" : "rgba(188,200,235,0.88)",
-              }}
-            />
+            <div className="flex h-20 items-end gap-1.5">
+              <div
+                className="w-3 rounded-t-[0.35rem] bg-[linear-gradient(180deg,#eef1f7_0%,#bfc7d5_100%)]"
+                style={{ height: group.left }}
+              />
+              <div
+                className="w-3 rounded-t-[0.35rem] bg-[linear-gradient(180deg,#9a70ff_0%,#9a70ff_100%)]"
+                style={{ height: group.right }}
+              />
+            </div>
+            <span className="mt-2 text-[10px] font-medium text-white/46">
+              {group.label}
+            </span>
           </motion.div>
         ))}
       </div>
@@ -99,7 +94,7 @@ function SavingsCard() {
           A consultoria organiza cada frente do marketing
         </p>
         <motion.div
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#139684]"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full "
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 1.05, duration: 0.3, type: "spring" }}

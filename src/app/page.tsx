@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CountUp } from "@/components/animated/count-up";
 import { Button } from "@/components/fintech/button";
 import { ChartCard } from "@/components/fintech/chart-card";
 import  logoJumbo  from "@/assets/icon-ijumper-jumbo.png";
@@ -14,17 +15,21 @@ const trustLogos = [
 
 const metrics = [
   {
-    value: "R$1B+",
+    end: 1,
+    prefix: "R$",
+    suffix: "B+",
     title: "em potencial movimentado",
     text: "Estruturamos marcas, posicionamentos e operacoes com foco em escala e valor percebido.",
   },
   {
-    value: "95%",
+    end: 95,
+    suffix: "%",
     title: "de retencao consultiva",
     text: "A relacao continua quando a estrategia gera clareza e a execucao passa a ter direcao real.",
   },
   {
-    value: "24/7",
+    end: 24,
+    suffix: "/7",
     title: "visao de crescimento",
     text: "Acompanhamento estrategico para empresas que precisam responder rapido ao mercado.",
   },
@@ -217,12 +222,16 @@ export default function HomePage() {
         <div className="grid gap-8 border-y border-white/8 py-10 md:grid-cols-3">
           {metrics.map((metric, index) => (
             <article
-              key={metric.value}
+              key={metric.title}
               className={`${index < 2 ? "md:border-r md:border-white/10 md:pr-8" : ""}`}
             >
               <div className="flex items-center gap-3">
                 <p className="font-display text-6xl font-bold tracking-[-0.05em] text-[#d8ff7d] sm:text-7xl">
-                  {metric.value}
+                  <CountUp
+                    end={metric.end}
+                    prefix={metric.prefix}
+                    suffix={metric.suffix}
+                  />
                 </p>
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/8 text-sm text-[#d8ff7d]">
                   +
