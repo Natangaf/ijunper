@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CountUp } from "@/components/animated/count-up";
+import { Reveal } from "@/components/animated/reveal";
 import { Button } from "@/components/fintech/button";
 import { ChartCard } from "@/components/fintech/chart-card";
 import  logoJumbo  from "@/assets/icon-ijumper-jumbo.png";
@@ -150,7 +151,7 @@ export default function HomePage() {
     <div className="pb-24">
       <section className="container-shell pt-10 sm:pt-14">
         <div className="grid items-center gap-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-10">
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-white/72 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#c7ff7d]" />
               Crescimento inteligente, estrategia clara
@@ -194,18 +195,18 @@ export default function HomePage() {
               Dados do dashboard e indicadores abaixo sao mockados para
               composicao visual.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="relative pb-20 sm:pb-12">
+          <Reveal className="relative pb-20 sm:pb-12" delay={0.12}>
             <div className="absolute left-8 top-8 h-32 w-32 rounded-full bg-[#c7ff7d]/10 blur-3xl" />
             <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#9a70ff]/20 blur-3xl" />
             <ChartCard />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-shell pt-24 sm:pt-28">
-        <div className="flex items-center gap-5">
+        <Reveal className="flex items-center gap-5">
           <div className="h-px flex-1 bg-white/10" />
           <Image
             src={logoJumbo}
@@ -215,16 +216,18 @@ export default function HomePage() {
             className="h-7 w-auto object-contain"
           />
           <div className="h-px flex-1 bg-white/10" />
-        </div>
+        </Reveal>
       </section>
 
       <section className="container-shell pt-14 sm:pt-16">
         <div className="grid gap-8 border-y border-white/8 py-10 md:grid-cols-3">
           {metrics.map((metric, index) => (
-            <article
+            <Reveal
               key={metric.title}
+              delay={index * 0.08}
               className={`${index < 2 ? "md:border-r md:border-white/10 md:pr-8" : ""}`}
             >
+              <article>
               <div className="flex items-center gap-3">
                 <p className="font-display text-6xl font-bold tracking-[-0.05em] text-[#d8ff7d] sm:text-7xl">
                   <CountUp
@@ -243,13 +246,15 @@ export default function HomePage() {
               <p className="mt-2 max-w-sm text-sm leading-7 text-white/62">
                 {metric.text}
               </p>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="container-shell pt-20 sm:pt-24">
         <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr]">
+          <Reveal>
           <div>
             <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Quem atendemos
@@ -273,8 +278,9 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+          </Reveal>
 
-          <div className="pt-2">
+          <Reveal className="pt-2" delay={0.12}>
             <p className="max-w-2xl text-base leading-8 text-white/68">
               A I Jumper atua com negocios que precisam crescer com direcao.
               Isso inclui empresas que querem sair da estagnacao, marcas que
@@ -297,12 +303,12 @@ export default function HomePage() {
             <div className="mt-12 rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-4 shadow-lg">
               <div className="h-[26rem] rounded-[1.5rem] bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.28),transparent_14%),linear-gradient(135deg,#f3d4ff_0%,#b38eff_35%,#6c3bff_100%)]" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-shell pt-20 sm:pt-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Servicos estrategicos para sustentar o seu proximo salto
           </h2>
@@ -310,14 +316,16 @@ export default function HomePage() {
             Uma estrutura de servicos inspirada na clareza visual do SaaS, mas
             aplicada ao posicionamento, marketing e consultoria da I Jumper.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {services.map((service) => (
-            <article
+            <Reveal
               key={service.title}
+              delay={(services.indexOf(service) % 2) * 0.08}
               className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-8 shadow-lg"
             >
+              <article>
               <div className="relative z-10 max-w-sm">
                 <h3 className="font-display text-3xl font-bold text-white">
                   {service.title}
@@ -333,23 +341,24 @@ export default function HomePage() {
               <div className="absolute bottom-6 right-6 opacity-95">
                 <AccentShape accent={service.accent} />
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="container-shell pt-20 sm:pt-24">
-        <div className="text-center text-sm text-white/48">
+        <Reveal className="text-center text-sm text-white/48">
           Mais de 4.000 empresas ja crescendo com mais estrutura
-        </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 text-lg font-semibold text-white/46">
+        </Reveal>
+        <Reveal className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 text-lg font-semibold text-white/46" delay={0.08}>
           {trustLogos.concat(trustLogos).map((logo, index) => (
             <span key={`${logo}-${index}`}>{logo}</span>
           ))}
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="max-w-xl">
+          <Reveal className="max-w-xl">
             <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl">
               Impulsionamos a jornada da marca com estrutura, visao e
               consistencia
@@ -364,9 +373,9 @@ export default function HomePage() {
                 Quero comecar
               </Button>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-[0.42fr_0.58fr]">
+          <Reveal className="grid gap-4 sm:grid-cols-[0.42fr_0.58fr]" delay={0.12}>
             <div className="grid gap-4">
               <article className="rounded-[1.7rem] bg-[#b7a7ff] p-5 text-[#211143] shadow-lg">
                 <p className="text-sm">Planejamento</p>
@@ -408,12 +417,12 @@ export default function HomePage() {
                 </div>
               </div>
             </article>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-shell pt-20 sm:pt-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Conheca os especialistas por tras da estrategia
           </h2>
@@ -421,11 +430,13 @@ export default function HomePage() {
             Profissionais mockados para compor a secao de equipe e reproduzir a
             estrutura visual da referencia da homepage.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {team.map((member) => (
-            <TeamCard key={member.name} name={member.name} role={member.role} />
+            <Reveal key={member.name} delay={(team.indexOf(member) % 3) * 0.08}>
+              <TeamCard name={member.name} role={member.role} />
+            </Reveal>
           ))}
         </div>
       </section>
