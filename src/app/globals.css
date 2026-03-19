@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #160a2e;
+  --color-foreground: #ffffff;
+  --color-muted: #d0c4ec;
+  --color-surface: #221044;
+  --color-primary: #6c3bff;
+  --color-primary-deep: #2b0a5b;
+  --color-accent: #ff4fcb;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #160a2e;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(175, 110, 255, 0.3), transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 79, 203, 0.18), transparent 24%),
+    radial-gradient(circle at 12% 55%, rgba(108, 59, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #200b46 0%, #160a2e 42%, #1b0d37 100%);
+  color: #fff;
+  font-family: var(--font-sans), sans-serif;
+}
+
+a,
+button,
+input,
+textarea {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+::selection {
+  background: rgba(255, 79, 203, 0.35);
+  color: #fff;
+}
+
+.container-shell {
+  margin-inline: auto;
+  width: min(100% - 1.5rem, 72rem);
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+    linear-gradient(135deg, rgba(108, 59, 255, 0.18), rgba(43, 10, 91, 0.5));
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px rgba(43, 10, 91, 0.18);
+}
+
+.editorial-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(145deg, rgba(154, 112, 255, 0.18), rgba(255, 79, 203, 0.1)),
+    linear-gradient(180deg, rgba(39, 15, 76, 0.92), rgba(22, 10, 46, 0.96));
+  box-shadow: 0 28px 80px rgba(32, 11, 70, 0.28);
+}
+
+.editorial-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 20%),
+    linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.08) 31%, transparent 35%),
+    linear-gradient(135deg, transparent 42%, rgba(255, 255, 255, 0.06) 43%, transparent 47%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.slanted-ribbon {
+  display: inline-flex;
+  transform: rotate(-4deg);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #0d0b16;
+  color: white;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.starburst {
+  clip-path: polygon(50% 0%, 61% 24%, 85% 8%, 76% 33%, 100% 36%, 79% 50%, 100% 64%, 76% 67%, 85% 92%, 61% 76%, 50% 100%, 39% 76%, 15% 92%, 24% 67%, 0% 64%, 21% 50%, 0% 36%, 24% 33%, 15% 8%, 39% 24%);
+}
+
+.diagonal-lines {
+  background-image:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 2px, transparent 2px, transparent 18px),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.06) 0, rgba(255, 255, 255, 0.06) 1px, transparent 1px, transparent 22px);
+  background-size: 28px 28px, 42px 42px;
+}
+
+.cut-card {
+  clip-path: polygon(0 0, 94% 0, 100% 5%, 100% 100%, 7% 100%, 0 95%);
+}
+
+.cut-card-soft {
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 95% 100%, 0 100%);
+}
+
+.paper-rip-top {
+  position: relative;
+}
+
+.paper-rip-top::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 14px;
+  background:
+    linear-gradient(-135deg, transparent 6px, #fff 0) 0 0 / 14px 14px repeat-x,
+    linear-gradient(135deg, transparent 6px, #fff 0) 7px 0 / 14px 14px repeat-x;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+.paper-rip-bottom {
+  position: relative;
+}
+
+.paper-rip-bottom::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 12px;
+  background:
+    linear-gradient(-135deg, transparent 6px, rgba(255, 255, 255, 0.96) 0) 0 0 / 14px 14px repeat-x,
+    linear-gradient(135deg, transparent 6px, rgba(255, 255, 255, 0.96) 0) 7px 0 / 14px 14px repeat-x;
+  opacity: 0.42;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
